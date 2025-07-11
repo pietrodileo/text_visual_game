@@ -1,0 +1,31 @@
+{
+  "scenes": {
+    "start": {
+      "text": "Brandisci sessiodoro e provi ad attaccare il drago con una possente palla di fuoco!",
+      "background": "background2.jpg",
+      "actions": [
+        {
+          "label": "Tenta la fuga",
+          "check": {
+            "type": "agility",
+            "dc": 12
+          },
+          "effectsSuccess": {
+            "nextScene": "fuga",
+            "player": { "stamina": -2 }
+          },
+          "effectsFailure": {
+            "nextScene": "cattura",
+            "player": { "health": -5 }
+          }
+        },
+        {
+          "label": "Attacca il drago",
+          "effects": {
+            "nextScene": "attack"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "player": {
+    "name": "Pedrestar Il Bambinaio",
+    "level": 27,
+    "health": 0.75,
+    "stamina": 0.3,
+    "mana": 0.75,
+    "avatar": "assets/avatar_P.jpg",
+    "strength":5,
+    "wisdom":10,
+    "constitution":7,
+    "charisma":6,
+    "agility":6
+  }
+}

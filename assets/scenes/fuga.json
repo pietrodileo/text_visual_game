@@ -1,0 +1,17 @@
+{
+  "scenes": {
+    "start": {
+      "text": "Sei riuscito a fuggire dal campo di battaglia. Il culo dei tuoi amici però verrà arrostito, e loro non saranno molto contenti.",
+      "background": "background2.jpg",
+      "actions": [
+        {
+          "label": "Fatti una sega nell'attesa",
+          "effects": {
+            "nextScene": "cattura",
+            "player": { "health": 5 }
+          }
+        }
+      ]
+    }
+  }
+}
