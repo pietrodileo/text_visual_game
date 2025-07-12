@@ -1,0 +1,17 @@
+{
+  "scenes": {
+    "drago_sconfitto": {
+      "text": "Il drago lancia un ultimo ruggito e crolla a terra. I tuoi compagni ti raggiungono tra grida di trionfo. Tiri un sospiro di sollievo e crolli a terra stremato. Quando ti risvegli ti stanno trasportando su un carro, insieme agli altri feriti, alla città più vicina.",
+      "background": "images/chapter1/dragosconfitto.jpg",
+      "actions": [
+        {
+          "label": "Prosegui verso la città",
+          "effects": {
+            "nextScene": "citta_mura",
+            "nextChapter": "chapter1"
+          }
+        }
+      ]
+    }
+  }
+}

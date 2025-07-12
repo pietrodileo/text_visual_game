@@ -5,6 +5,7 @@ import '../widgets/background.dart';
 import '../widgets/top_bar.dart';
 import '../widgets/dice_roller.dart';
 import '../data/game_data.dart';
+import '../widgets/dice_check_dialog.dart';
 
 class GameScreen extends StatelessWidget {
   const GameScreen({super.key});
@@ -45,13 +46,6 @@ class GameScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
-              const SizedBox(height: 20),
-
-              DiceRoller(),
-
-              const SizedBox(height: 20),
-
               // Pulsanti per azioni
               Padding(
                 padding: const EdgeInsets.all(12.0),
@@ -59,16 +53,36 @@ class GameScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: currentScene.actions.map((action) {
                     return ElevatedButton(
-                      onPressed: () async {
-                        if (action.check != null) {
-                          // gestione prova D20 da implementare qui
-                        }
+                    onPressed: () async {
+                      debugPrint('Entro qui');
+                      if (action.check != null) {
+                          // Mostra animazione
+                          final roll = await showDialog<int>(
+                            context: context,
+                            builder: (_) => DiceCheckDialog(check: action.check!),
+                          );
+                        
+                          if (roll == null) return;
 
-                        // Applica gli effetti senza check
-                        if (action.effects != null) {
-                          await sceneManager.performAction(action.effects!);
-                        }
-                      },
+                          final stat = action.check!.type;
+                          final dc = action.check!.dc;
+                          final statValue = GameData.getPlayerStat(stat);
+                          final total = roll + statValue;
+                          final success = total >= dc;
+
+                          debugPrint('Hai tirato: $roll + ${action.check!.type}($statValue) = $total');
+                          debugPrint('CD: ${action.check!.dc}');
+
+                          // Applica gli effetti
+                          if (success && action.effectsSuccess != null) {
+                            await sceneManager.performAction(action.effectsSuccess!);
+                          } else if (!success && action.effectsFailure != null) {
+                            await sceneManager.performAction(action.effectsFailure!);
+                          }
+                      } else if (action.effects != null) {
+                        await sceneManager.performAction(action.effects!);
+                      }
+                    },
                       child: Text(action.label),
                     );
                   }).toList(),

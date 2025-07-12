@@ -2,7 +2,7 @@
   "scenes": {
     "start": {
       "text": "Brandisci sessiodoro e provi ad attaccare il drago con una possente palla di fuoco!",
-      "background": "background2.jpg",
+      "background": "images/chapter1/attack.jpg",
       "actions": [
         {
           "label": "Tenta la fuga",

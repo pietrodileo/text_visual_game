@@ -1,0 +1,27 @@
+{
+  "scenes": {
+    "attack": {
+      "text": "Evocando tutta la tua forza interiore, scagli una sfera di fuoco verso il drago. Il colpo lo colpisce in pieno, ma la bestia non cade. Il terreno trema mentre si prepara a contrattaccare.",
+      "background": "images/chapter1/attack.jpg",
+      "actions": [
+        {
+          "label": "Prova a colpirlo di nuovo",
+          "check": {
+            "type": "wisdom",
+            "dc": 14
+          },
+          "effectsSuccess": {
+            "nextScene": "drago_sconfitto",
+            "nextChapter": "chapter1",
+            "player": { "mana": -5 }
+          },
+          "effectsFailure": {
+            "nextScene": "cattura",
+            "nextChapter": "chapter1",
+            "player": { "health": -10 }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "scenes": {
+    "start": {
+      "text": "Ti trovi nel mezzo di uno spietato campo di battaglia. L'aria è umida e carica di tensione, mentre intorno a te si alzano grida e fumo. Davanti a te si intravedono due occhi iniettati di sangue e delle fauci pronte a soffiare fuoco. Puoi evocare una potente palla di fuoco, più intensa di quella del tuo nemico, rischiando però di coinvolgere i tuoi compagni... oppure puoi tentare una fuga disperata, lasciando a loro l'onere dello scontro.",
+      "background": "images/chapter1/start.png",
+      "actions": [
+        {
+          "label": "Tenta la fuga",
+          "check": {
+            "type": "agility",
+            "dc": 18
+          },
+          "effectsSuccess": {
+            "nextScene": "fuga",
+            "nextChapter": "chapter1",
+            "player": { "stamina": -2 }
+          },
+          "effectsFailure": {
+            "nextScene": "cattura",
+            "nextChapter": "chapter1",
+            "player": { "health": -5 }
+          }
+        },
+        {
+          "label": "Attacca il drago",
+          "effects": {
+            "nextScene": "attack",
+            "nextChapter": "chapter1"
+          }
+        }
+      ]
+    }
+  }
+}

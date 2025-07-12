@@ -1,0 +1,27 @@
+{
+  "scenes": {
+    "cattura": {
+      "text": "Il drago librandosi in aria incenerisce con una fiammata il cammino davanti a te, bloccandoti la strada.",
+      "background": "images/chapter1/cattura.jpg",
+      "actions": [
+        {
+          "label": "Cerca di liberarti",
+          "check": {
+            "type": "strength",
+            "dc": 10
+          },
+          "effectsSuccess": {
+            "nextScene": "fuga",
+            "nextChapter": "chapter1",
+            "player": { "health": -2 }
+          },
+          "effectsFailure": {
+            "nextScene": "morte",
+            "nextChapter": "chapter1",
+            "player": { "stamina": -2 }
+          }
+        }
+      ]
+    }
+  }
+}

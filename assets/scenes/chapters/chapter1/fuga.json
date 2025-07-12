@@ -1,0 +1,17 @@
+{
+  "scenes": {
+    "fuga": {
+      "text": "In qualche modo riesci a liberarti del drago e corri nel bosco a tutta velocità mentre le urla della battaglia svaniscono alle tue spalle. Dopo minuti interminabili, raggiungi una radura dove puoi tirare il fiato. In lontananza si intravedono le mura di una città, abbastanza vicina per raggiungerla a piedi mentre è ancora giorno.",
+      "background": "images/chapter1/fuga.jpg",
+      "actions": [
+        {
+          "label": "Dirigiti alla città",
+          "effects": {
+            "nextScene": "citta_mura",
+            "nextChapter": "chapter1"
+          }
+        }
+      ]
+    }
+  }
+}

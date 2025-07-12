@@ -8,24 +8,27 @@ import '../models/scene.dart';
 class SceneManager extends ChangeNotifier {
   Scene? _currentScene;
   String? _currentSceneId;
+  String? _currentChapter;
 
   // Cache per migliorare performance e non ricaricare più volte
   final Map<String, Scene> _cache = {};
 
   Scene? get currentScene => _currentScene;
   String? get currentSceneId => _currentSceneId;
+  String? get currentChapter => _currentChapter;
 
   /// Carica la scena identificata da [sceneId]
-  Future<void> loadScene(String sceneId) async {
+  Future<void> loadScene(String chapterId, String sceneId) async {
     if (_cache.containsKey(sceneId)) {
       _currentScene = _cache[sceneId];
       _currentSceneId = sceneId;
+      _currentChapter = chapterId;
       notifyListeners();
       return;
     }
 
-    try {
-      final jsonString = await rootBundle.loadString('/scenes/$sceneId.json');
+    try {  
+      final jsonString = await rootBundle.loadString('scenes/chapters/$chapterId/$sceneId.json');
       final jsonData = json.decode(jsonString);
       final sceneJson = jsonData['scenes'][sceneId]; // ✅
       final scene = Scene.fromJson(sceneId, sceneJson);
@@ -36,15 +39,15 @@ class SceneManager extends ChangeNotifier {
 
       notifyListeners();
     } catch (e) {
-      debugPrint('Errore caricamento scena $sceneId: $e');
+      debugPrint('Errore caricamento scena $sceneId, capitolo $chapterId: $e');
       // Puoi decidere di gestire meglio l'errore (es. scena fallback)
     }
   }
 
   /// Metodo per inizializzare con la scena di partenza
   Future<void> start() async {
-    await loadScene('start');
-  }
+    await loadScene('chapter1','start');
+  } 
 
   /// Esempio di metodo per applicare effetti, cambia scena, ecc.
   Future<void> performAction(Effect effects) async {
@@ -53,7 +56,7 @@ class SceneManager extends ChangeNotifier {
     }
 
     if (effects.nextScene != null) {
-      await loadScene(effects.nextScene!);
+      await loadScene(effects.nextChapter!,effects.nextScene!);
     } else {
       notifyListeners();
     }

@@ -2,7 +2,7 @@
   "scenes": {
     "start": {
       "text": "Eri convinto di essere riuscito a sfuggirgli, quando di colpo senti il culo bruciare. Il fuoco del drago ti ha raggiunto! Vedi i tuoi amici scappare a gambe levate dall'orrida bestia. Il problema ora è che tu hai le brache calate e non sai se riuscirai a fuggire in tempo.",
-      "background": "background2.jpg",
+      "background": "images/chapter1/cattura.jpg",
       "actions": [
         {
           "label": "Corri",

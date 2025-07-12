@@ -1,22 +1,30 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
-class DiceRoller extends StatefulWidget {
-  const DiceRoller({super.key});
+/// Funzionalità logica del dado D20
+class DiceRoller {
+  static final _random = Random();
 
-  @override
-  State<DiceRoller> createState() => _DiceRollerState();
+  /// Tiro rapido per logica di gioco (es: prove abilità)
+  static int rollD20() => _random.nextInt(20) + 1;
 }
 
-class _DiceRollerState extends State<DiceRoller> {
+/// Widget animato per mostrare il tiro a schermo
+class DiceRollerWidget extends StatefulWidget {
+  const DiceRollerWidget({super.key});
+
+  @override
+  State<DiceRollerWidget> createState() => _DiceRollerWidgetState();
+}
+
+class _DiceRollerWidgetState extends State<DiceRollerWidget> {
   final Random random = Random();
   int currentRoll = 1;
   bool rolling = false;
 
   void rollDice() {
-    if (rolling) return; // blocca se già in animazione
+    if (rolling) return;
 
     rolling = true;
     int rollCount = 0;
@@ -27,9 +35,10 @@ class _DiceRollerState extends State<DiceRoller> {
       });
 
       rollCount++;
-      if (rollCount >= 20) { // circa 2 secondi di animazione
+      if (rollCount >= 20) {
         timer.cancel();
         rolling = false;
+        // potresti chiamare un callback qui se serve
       }
     });
   }
@@ -37,6 +46,7 @@ class _DiceRollerState extends State<DiceRoller> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           'Lancio D20: $currentRoll',

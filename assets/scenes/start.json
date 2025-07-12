@@ -2,7 +2,7 @@
   "scenes": {
     "start": {
       "text": "Ti trovi nel mezzo di uno spietato campo di battaglia. L'aria è umida e un odore antico permea i culi dei tuoi compagni. Davanti a te si intravedono due grossi occhi iniettati di sangue e delle fauci pronte a soffiare fuoco. Sta a te scegliere se evocare una grossa palla di fuoco,più potente di quella del tuo nemico, che potrebbe però arrostire i culi dei tuoi selvaggi amici, oppure se darti alla fuga a chiappe al vento, lasciando a loro l'arduo compito di sconfiggere la bestia da soli.",
-      "background": "background2.jpg",
+      "background": "images/chapter1/start.png",
       "actions": [
         {
           "label": "Tenta la fuga",
@@ -22,7 +22,7 @@
         {
           "label": "Attacca il drago",
           "effects": {
-            "nextScene": "attack"
+            "nextScene": "attacco"
           }
         }
       ]

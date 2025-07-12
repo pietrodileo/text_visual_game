@@ -19,13 +19,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/cripta.png
-    - assets/avatar.png
-    - assets/background2.jpg
-    - assets/avatar_P.jpg
-    - assets/background.jpg
-    - assets/data.json
     - assets/players/
     - assets/scenes/
     - assets/images/
-    - assets/

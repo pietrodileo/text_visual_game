@@ -37,13 +37,15 @@ class Check {
 }
 
 class Effect {
+  final String? nextChapter;
   final String? nextScene;
   final Map<String, dynamic>? player;
 
-  Effect({this.nextScene, this.player});
+  Effect({this.nextChapter, this.nextScene, this.player});
 
   factory Effect.fromJson(Map<String, dynamic> json) {
     return Effect(
+      nextChapter: json['nextChapter'],
       nextScene: json['nextScene'],
       player: json['player'],
     );
